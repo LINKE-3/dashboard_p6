@@ -301,5 +301,17 @@ fig = show_batch(sample_dl, 2, 2)
 st.markdown("## Normalize")
 st.pyplot(fig)
 
+st.markdown("## Images prédiction")
+
+
+st.markdown("## Irish_wolfhound")
+st.image(os.path.join(ressource_path, 'imgpred/imgpred1.jpg'))
+
+st.markdown("## cairn")
+st.image(os.path.join(ressource_path, 'imgpred/imgpred2.jpg'))
+
+st.markdown("## Scottish_deerhound")
+st.image(os.path.join(ressource_path, 'imgpred/imgpred3.jpg'))
+
 
 #sns.countplot(dt_src['race'])
