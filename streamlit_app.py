@@ -50,13 +50,13 @@ st.dataframe(dt_src['race'].unique())
 
 
 
-my_list = ['Irish_wolfhound', 'Pomeranian', 'Afghan_hound',
+my_listold = ['Irish_wolfhound', 'Pomeranian', 'Afghan_hound',
        'Scottish_deerhound', 'Bernese_mountain_dog', 'Maltese_dog',
        'Airedale', 'Saluki', 'Shih', 'cairn']
 
-option = st.selectbox('select dog race',     ('Irish_wolfhound', 'Pomeranian', 'Afghan_hound',
-       'Scottish_deerhound', 'Bernese_mountain_dog', 'Maltese_dog',
-       'Airedale', 'Saluki', 'Shih', 'cairn'))
+my_list = ['Irish_wolfhound', 'cairn', 'Afghan_hound', 'Pomeranian']
+
+option = st.selectbox('select dog race',     ('Irish_wolfhound', 'cairn', 'Afghan_hound', 'Pomeranian'))
 
 st.write('You selected:', option)
 
@@ -190,7 +190,7 @@ train_transforms = Compose(
         ]
     )
 
-img_list = ['Crop_img/n02085936_37.jpg', 'Crop_img/n02091831_8223.jpg', 'Crop_img/n02091831_8401.jpg','Crop_img/n02085936_37.jpg', 'Crop_img/n02091831_8223.jpg', 'Crop_img/n02091831_8401.jpg','Crop_img/n02085936_37.jpg', 'Crop_img/n02091831_8223.jpg', 'Crop_img/n02091831_8401.jpg','Crop_img/n02085936_37.jpg', 'Crop_img/n02091831_8223.jpg', 'Crop_img/n02091831_8401.jpg','Crop_img/n02085936_37.jpg', 'Crop_img/n02091831_8223.jpg', 'Crop_img/n02091831_8401.jpg','Crop_img/n02085936_37.jpg', 'Crop_img/n02091831_8223.jpg', 'Crop_img/n02091831_8401.jpg']
+img_list = ['Crop_img/n02088094_26.jpg', 'Crop_img/n02088094_60.jpg', 'Crop_img/n02088094_93.jpg','Crop_img/n02088094_115.jpg']
 
 class MyImageDataset(Dataset):
     
@@ -292,13 +292,13 @@ transform=torchvision.transforms.Compose([
                               torchvision.transforms.ToPILImage(), 
                               torchvision.transforms.RandomResizedCrop(224),
                               torchvision.transforms.ToTensor(),
-                              torchvision.transforms.normalize
+                              torchvision.transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]),
                               ])
 sample_ds=MyImageDataset(img_list,transform)
 sample_dl=DataLoader(sample_ds,batch_size=4) # , shuffle=True
 fig = show_batch(sample_dl, 2, 2)
 
-st.markdown("## RandomHorizontalFlip")
+st.markdown("## Normalize")
 st.pyplot(fig)
 
 
