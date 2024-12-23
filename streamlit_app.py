@@ -264,7 +264,7 @@ st.pyplot(fig)
 
 transform=torchvision.transforms.Compose([
                               torchvision.transforms.ToPILImage(), 
-                              torchvision.transforms.RandomResizedCrop(224),
+                              torchvision.transforms.Resize((224,224)),
                               torchvision.transforms.RandomRotation(degrees=(0, 45)),
                               torchvision.transforms.ToTensor(),
                               ])
